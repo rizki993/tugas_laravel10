@@ -17,7 +17,7 @@ class AdminUsersController extends Controller
     public function index(): View
     {
         // testing flash session
-        $users = User::where('role', 'admin')->get();
+        $users = User::where('role', 'user')->get();
 
         return view('admin.modules.users.index', compact('users'));
     }
