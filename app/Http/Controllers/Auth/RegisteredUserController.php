@@ -40,12 +40,15 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'user',
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        $request->session()->flash('success', "Registrasi sukses, Selamat Datang {$user->name}!");
+
+        return redirect()->route('user.dashboard');
     }
 }

@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            @include('components.alert')
+            @include('includes.alert')
         </div>
     </div>
 </div>

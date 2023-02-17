@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -14,7 +15,10 @@ class AdminUsersController extends Controller
      */
     public function index(): View
     {
-        return view('admin.modules.users.index');
+        // testing flash session
+        $users = User::all();
+
+        return view('admin.modules.users.index', compact('users'));
     }
 
     /**

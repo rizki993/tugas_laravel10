@@ -14,6 +14,9 @@
     </div>
     <div class="row">
         <div class="col-12">
+            @include('includes.alert')
+            {{-- show flash message --}}
+
             <table class="table table-striped">
                 <thead>
                     <tr>
