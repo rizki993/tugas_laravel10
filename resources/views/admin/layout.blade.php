@@ -15,11 +15,11 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tablets fa-fw mr-2"></i></div>
                     Obat
                 </a>
-                <a class="nav-link" href="#">
+                <a class="nav-link {{ Route::is('admin.users.*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-users fa-fw mr-2"></i></div>
                     Pembeli
                 </a>
-                <a class="nav-link" href="#">
+                <a class="nav-link {{ Route::is('admin.admins.*') ? 'active' : '' }}" href="{{ route('admin.admins.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-user-tie fa-fw mr-2"></i></div>
                     Admins
                 </a>

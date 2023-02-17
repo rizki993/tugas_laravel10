@@ -9,7 +9,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
-class AdminUsersController extends Controller
+class AdminAdminsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class AdminUsersController extends Controller
     public function index(): View
     {
         // testing flash session
-        $users = User::where('role', 'admin')->get();
+        $admins = User::where('role', 'admin')->get();
 
-        return view('admin.modules.users.index', compact('users'));
+        return view('admin.modules.admins.index', compact('admins'));
     }
 
     /**
@@ -28,7 +28,7 @@ class AdminUsersController extends Controller
     public function create(): View
     {
         $is_add = true;
-        return view('admin.modules.users.form', compact('is_add'));
+        return view('admin.modules.admins.form', compact('is_add'));
     }
 
     /**
@@ -42,14 +42,14 @@ class AdminUsersController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role = 'user';
-        $user->save();
+        $admin = new User();
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->password = Hash::make($request->password);
+        $admin->role = 'admin';
+        $admin->save();
 
-        return redirect()->route('admin.users.index')->with('success', 'User baru berhasil dibuat!');
+        return redirect()->route('admin.admins.index')->with('success', 'Admin baru berhasil dibuat!');
     }
 
     /**
@@ -58,8 +58,8 @@ class AdminUsersController extends Controller
     public function edit(string $id): View
     {
         $is_add = false;
-        $user = User::find($id);
-        return view('admin.modules.users.form', compact('is_add', 'user'));
+        $admin = User::find($id);
+        return view('admin.modules.admins.form', compact('is_add', 'admin'));
     }
 
     /**
@@ -81,7 +81,7 @@ class AdminUsersController extends Controller
         }
         $user->save();
 
-        return redirect()->route('admin.users.index')->with('success', 'User berhasil diupdate!');
+        return redirect()->route('admin.admins.index')->with('success', 'Admin berhasil diupdate!');
     }
 
     /**
@@ -92,6 +92,6 @@ class AdminUsersController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->route('admin.users.index')->with('success', 'User berhasil dihapus!');
+        return redirect()->route('admin.admins.index')->with('success', 'Admin berhasil dihapus!');
     }
 }

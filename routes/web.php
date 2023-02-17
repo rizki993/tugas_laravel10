@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminAdminsController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
         return view('admin.dashboard');
     })->name('dashboard');
     Route::resource('users', AdminUsersController::class)->except(['show']);
+    Route::resource('admins', AdminAdminsController::class)->except(['show']);
 });
 
 Route::prefix('user')->name('user.')->middleware(['auth', 'role:user'])->group(function () {
