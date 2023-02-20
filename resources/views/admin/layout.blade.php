@@ -15,7 +15,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-boxes fa-fw mr-2"></i></div>
                     Kategori Obat
                 </a>
-                <a class="nav-link" href="#">
+                <a class="nav-link {{ Route::is('admin.obat.*') ? 'active' : '' }}" href="{{ route('admin.obat.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tablets fa-fw mr-2"></i></div>
                     Obat
                 </a>
