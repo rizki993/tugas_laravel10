@@ -5,19 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Obat extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'category_id',
         'name',
         'description',
+        'image',
+        'price',
+        'stock',
     ];
 
-    protected $table = 'categories';
-
-    public function obats()
+    public function category()
     {
-        return $this->hasMany(Obat::class);
+        return $this->belongsTo(Category::class);
     }
 }

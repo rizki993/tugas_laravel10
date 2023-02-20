@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminAdminsController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminObatController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::resource('users', AdminUsersController::class)->except(['show']);
     Route::resource('admins', AdminAdminsController::class)->except(['show']);
     Route::resource('category', AdminCategoryController::class)->except(['show']);
+    Route::resource('obat', AdminObatController::class)->except(['show']);
 });
 
 Route::prefix('user')->name('user.')->middleware(['auth', 'role:user'])->group(function () {
